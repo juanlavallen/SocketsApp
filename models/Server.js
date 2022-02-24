@@ -2,6 +2,8 @@ const express = require('express');
 const http = require('http');
 const cors = require('cors');
 
+const { socketController } = require('../sockets/controller');
+
 class Server {
     constructor() {
         this.app = express();
@@ -16,7 +18,7 @@ class Server {
     }
 
     sockets() {
-
+        this.io.on('connection', socketController);
     }
 
     listen() {
