@@ -10,6 +10,13 @@ class Server {
         this.PORT = process.env.PORT || 5050;
         this.server = http.createServer(this.app);
         this.io = require('socket.io')(this.server);
+
+        // Middlewares
+        this.middlewares();
+
+        // Sockets
+        this.sockets();
+
     }
 
     middlewares() {
