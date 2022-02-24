@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const Ticket = require('./Ticket');
 
 class TicketControl {
     constructor() {
@@ -35,6 +36,13 @@ class TicketControl {
     save() {
         const pathFile = path.join(__dirname, '../data/data.json');
         fs.writeFileSync(pathFile, JSON.stringify(this.toJSON));
+    }
+
+    next() {
+        this.last += 1;
+        this.tickets.push(new Ticket(this.last, null));
+        this.save();
+        return `Ticket ${this.number}`
     }
 }
 
