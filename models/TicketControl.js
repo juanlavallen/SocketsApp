@@ -40,9 +40,10 @@ class TicketControl {
 
     next() {
         this.last += 1;
-        this.tickets.push(new Ticket(this.last, null));
+        const ticket = new Ticket(this.last, null);
+        this.tickets.push(ticket);
         this.save();
-        return `Ticket ${this.number}`
+        return `Ticket ${ticket.number}`
     }
 
     attend(desktop) {
