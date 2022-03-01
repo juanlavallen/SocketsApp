@@ -12,6 +12,9 @@ const socket = io();
 socket.on('last-four', (payload) => {
     const [ticket1, ticket2, ticket3, ticket4] = payload;
 
+    const audio = new Audio('./audio/new-ticket.mp3');
+    audio.play();
+
     if (ticket1) {
         ticketOne.textContent = `Ticket ${ticket1.number}`
         desktop1.textContent = ticket1.desktop;
