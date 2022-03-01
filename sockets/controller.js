@@ -22,6 +22,8 @@ const socketController = (socket) => {
         }
 
         const ticket = ticketControl.attend(desktop);
+        socket.broadcast.emit('last-four', ticketControl.lastfour);
+
         if (!ticket) {
             callback({
                 ok: false,
