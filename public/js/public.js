@@ -12,15 +12,23 @@ const socket = io();
 socket.on('last-four', (payload) => {
     const [ticket1, ticket2, ticket3, ticket4] = payload;
 
-    ticketOne.textContent = `Ticket ${ticket1.number}`
-    desktop1.textContent = ticket1.desktop;
+    if (ticket1) {
+        ticketOne.textContent = `Ticket ${ticket1.number}`
+        desktop1.textContent = ticket1.desktop;
+    }
 
-    ticketTwo.textContent = `Ticket ${ticket2.number}`
-    desktop2.textContent = ticket3.desktop;
+    if (ticket2) {
+        ticketTwo.textContent = `Ticket ${ticket2.number}`
+        desktop2.textContent = ticket3.desktop;
+    }
 
-    ticketThree.textContent = `Ticket ${ticket3.number}`
-    desktop3.textContent = ticket3.desktop;
+    if (ticket3) {
+        ticketThree.textContent = `Ticket ${ticket3.number}`
+        desktop3.textContent = ticket3.desktop;
+    }
 
-    ticketFour.textContent = `Ticket ${ticket4.number}`
-    desktop4.textContent = ticket4.desktop;
+    if (ticket4) {
+        ticketFour.textContent = `Ticket ${ticket4.number}`
+        desktop4.textContent = ticket4.desktop;
+    }
 });
