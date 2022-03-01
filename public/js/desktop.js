@@ -2,6 +2,7 @@ const renderDesktop = document.querySelector('h1');
 const btnAttend = document.querySelector('button');
 const ticketAttend = document.querySelector('small');
 const msgAlert = document.querySelector('.alert');
+const pending = document.querySelector('#pending');
 
 const socket = io();
 
@@ -21,6 +22,15 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
     btnAttend.disabled = true;
+});
+
+socket.on('tickets-pending', (pendings) => {
+    if (pendings === 0) {
+        pending.style.display = 'none';
+    } else {
+        pending.style.display = '';
+        pending.innerText = pendings;
+    }
 });
 
 btnAttend.addEventListener('click', () => {
